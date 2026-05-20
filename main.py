@@ -295,9 +295,9 @@ document.querySelectorAll('.trigger-qual').forEach(r=>{{
         if(t)t.style.display=r.value==='Sim'?'block':'none';
     }});
 }});
-function maskData(e){{let v=e.target.value.replace(/\D/g,'').slice(0,8);if(v.length>4)v=v.slice(0,2)+'/'+v.slice(2,4)+'/'+v.slice(4);else if(v.length>2)v=v.slice(0,2)+'/'+v.slice(2);e.target.value=v;}}
-function maskFone(e){{let v=e.target.value.replace(/\D/g,'').slice(0,11);if(v.length>7)v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);else if(v.length>2)v='('+v.slice(0,2)+') '+v.slice(2);e.target.value=v;}}
-function maskCpf(e){{let v=e.target.value.replace(/\D/g,'').slice(0,11);if(v.length>9)v=v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6,9)+'-'+v.slice(9);else if(v.length>6)v=v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6);else if(v.length>3)v=v.slice(0,3)+'.'+v.slice(3);e.target.value=v;}}
+function maskData(e){{let v=e.target.value.replace(/[^0-9]/g,'').slice(0,8);if(v.length>4)v=v.slice(0,2)+'/'+v.slice(2,4)+'/'+v.slice(4);else if(v.length>2)v=v.slice(0,2)+'/'+v.slice(2);e.target.value=v;}}
+function maskFone(e){{let v=e.target.value.replace(/[^0-9]/g,'').slice(0,11);if(v.length>7)v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);else if(v.length>2)v='('+v.slice(0,2)+') '+v.slice(2);e.target.value=v;}}
+function maskCpf(e){{let v=e.target.value.replace(/[^0-9]/g,'').slice(0,11);if(v.length>9)v=v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6,9)+'-'+v.slice(9);else if(v.length>6)v=v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6);else if(v.length>3)v=v.slice(0,3)+'.'+v.slice(3);e.target.value=v;}}
 document.querySelectorAll('.mask-data').forEach(i=>i.addEventListener('input',maskData));
 document.querySelectorAll('.mask-fone').forEach(i=>i.addEventListener('input',maskFone));
 document.querySelectorAll('.mask-cpf').forEach(i=>i.addEventListener('input',maskCpf));
