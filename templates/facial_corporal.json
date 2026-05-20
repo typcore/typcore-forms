@@ -1,0 +1,61 @@
+{
+  "titulo": "Anamnese — Facial + Corporal",
+  "descricao": "Preencha com atenção. Suas respostas são confidenciais e essenciais para um atendimento seguro e personalizado.",
+  "secoes": [
+    {
+      "titulo": "Dados Pessoais",
+      "perguntas": [
+        {"tipo": "texto",    "texto": "Nome completo",       "obrigatorio": true},
+        {"tipo": "data",     "texto": "Data de nascimento",  "obrigatorio": true, "formato": "DD/MM/AAAA"},
+        {"tipo": "cpf",      "texto": "CPF",                 "obrigatorio": false},
+        {"tipo": "telefone", "texto": "Telefone / WhatsApp", "obrigatorio": true},
+        {"tipo": "texto",    "texto": "E-mail",              "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Saúde Geral",
+      "perguntas": [
+        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",        "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",     "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Possui alergia a produtos ou substâncias?",  "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",               "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Possui marca-passo ou prótese metálica?",    "obrigatorio": true}
+      ]
+    },
+    {
+      "titulo": "Saúde da Pele — Facial",
+      "perguntas": [
+        {"tipo": "escolha_unica", "texto": "Como você classifica sua pele?", "obrigatorio": true,
+          "opcoes": ["Seca", "Oleosa", "Mista", "Normal", "Sensível", "Não sei"]},
+        {"tipo": "sim_nao_qual", "texto": "Possui acne ou manchas?",                  "obrigatorio": false},
+        {"tipo": "sim_nao",      "texto": "Usa protetor solar diariamente?",          "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Saúde Corporal",
+      "perguntas": [
+        {"tipo": "sim_nao", "texto": "Tem problemas circulatórios ou varizes?",       "obrigatorio": false},
+        {"tipo": "escolha_unica", "texto": "Pratica atividade física?", "obrigatorio": false,
+          "opcoes": ["Não pratico", "1-2x por semana", "3-4x por semana", "5x ou mais"]}
+      ]
+    },
+    {
+      "titulo": "Objetivos",
+      "perguntas": [
+        {"tipo": "multipla_escolha", "texto": "O que deseja tratar no rosto?", "obrigatorio": false,
+          "opcoes": ["Manchas", "Acne", "Rugas", "Flacidez", "Hidratação", "Outro"]},
+        {"tipo": "multipla_escolha", "texto": "O que deseja tratar no corpo?", "obrigatorio": false,
+          "opcoes": ["Celulite", "Gordura localizada", "Flacidez", "Estrias", "Modelagem", "Outro"]},
+        {"tipo": "texto_longo", "texto": "Informações adicionais", "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Termo de Consentimento",
+      "perguntas": [
+        {"tipo": "consentimento",
+          "texto": "Declaro que as informações são verdadeiras e autorizo os procedimentos indicados.",
+          "label_aceite": "Li e concordo com o termo de consentimento."}
+      ]
+    }
+  ]
+}

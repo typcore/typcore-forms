@@ -1,0 +1,60 @@
+{
+  "titulo": "Anamnese — Estética Corporal",
+  "descricao": "Preencha com atenção. Suas respostas são confidenciais e essenciais para um atendimento seguro e personalizado.",
+  "secoes": [
+    {
+      "titulo": "Dados Pessoais",
+      "perguntas": [
+        {"tipo": "texto",    "texto": "Nome completo",       "obrigatorio": true},
+        {"tipo": "data",     "texto": "Data de nascimento",  "obrigatorio": true, "formato": "DD/MM/AAAA"},
+        {"tipo": "cpf",      "texto": "CPF",                 "obrigatorio": false},
+        {"tipo": "telefone", "texto": "Telefone / WhatsApp", "obrigatorio": true},
+        {"tipo": "texto",    "texto": "E-mail",              "obrigatorio": false},
+        {"tipo": "escolha_unica", "texto": "Estado civil", "obrigatorio": false,
+          "opcoes": ["Solteira(o)", "Casada(o)", "Divorciada(o)", "Viúva(o)", "União estável"]}
+      ]
+    },
+    {
+      "titulo": "Saúde Geral",
+      "perguntas": [
+        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",           "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",        "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Possui alergia a produtos ou substâncias?",     "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",                  "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Possui marca-passo ou prótese metálica?",       "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem problemas circulatórios ou varizes?",       "obrigatorio": false},
+        {"tipo": "sim_nao_qual", "texto": "Realizou cirurgia corporal recentemente?",      "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Hábitos e Estilo de Vida",
+      "perguntas": [
+        {"tipo": "escolha_unica", "texto": "Pratica atividade física?", "obrigatorio": false,
+          "opcoes": ["Não pratico", "1-2x por semana", "3-4x por semana", "5x ou mais por semana"]},
+        {"tipo": "escolha_unica", "texto": "Como avalia sua alimentação?", "obrigatorio": false,
+          "opcoes": ["Saudável", "Regular", "Ruim", "Estou em dieta"]},
+        {"tipo": "sim_nao", "texto": "Consome bastante água diariamente?", "obrigatorio": false},
+        {"tipo": "sim_nao", "texto": "Tem hábito de fumar?",               "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Objetivos do Tratamento",
+      "perguntas": [
+        {"tipo": "multipla_escolha", "texto": "O que deseja tratar ou melhorar?", "obrigatorio": true,
+          "opcoes": ["Celulite", "Gordura localizada", "Flacidez corporal", "Estrias",
+                     "Retenção de líquido / inchaço", "Modelagem corporal", "Outro"]},
+        {"tipo": "escolha_unica", "texto": "Já realizou tratamentos estéticos corporais antes?", "obrigatorio": false,
+          "opcoes": ["Nunca fiz", "Já fiz com bons resultados", "Já fiz sem resultados significativos"]},
+        {"tipo": "texto_longo", "texto": "Informações adicionais que deseja compartilhar", "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Termo de Consentimento",
+      "perguntas": [
+        {"tipo": "consentimento",
+          "texto": "Declaro que as informações acima são verdadeiras e autorizo a realização dos procedimentos estéticos indicados pela profissional.",
+          "label_aceite": "Li e concordo com o termo de consentimento."}
+      ]
+    }
+  ]
+}

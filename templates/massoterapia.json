@@ -1,0 +1,50 @@
+{
+  "titulo": "Anamnese — Massoterapia",
+  "descricao": "Preencha com atenção para que possamos personalizar sua sessão com segurança.",
+  "secoes": [
+    {
+      "titulo": "Dados Pessoais",
+      "perguntas": [
+        {"tipo": "texto",    "texto": "Nome completo",       "obrigatorio": true},
+        {"tipo": "data",     "texto": "Data de nascimento",  "obrigatorio": true, "formato": "DD/MM/AAAA"},
+        {"tipo": "telefone", "texto": "Telefone / WhatsApp", "obrigatorio": true},
+        {"tipo": "texto",    "texto": "E-mail",              "obrigatorio": false},
+        {"tipo": "texto",    "texto": "Profissão",           "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Saúde Geral",
+      "perguntas": [
+        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",         "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",      "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Está grávida?",                               "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem problemas de pressão arterial?",          "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem trombose ou problemas circulatórios?",    "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Tem alguma lesão, cirurgia recente ou área sensível?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem osteoporose ou problemas ósseos?",        "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Preferências da Massagem",
+      "perguntas": [
+        {"tipo": "escolha_unica", "texto": "Qual é o principal objetivo da sua sessão?", "obrigatorio": true,
+          "opcoes": ["Relaxamento", "Alívio de dores musculares", "Redução de estresse",
+                     "Melhora da circulação", "Tratamento de contraturas", "Outro"]},
+        {"tipo": "escolha_unica", "texto": "Preferência de pressão", "obrigatorio": false,
+          "opcoes": ["Leve", "Média", "Firme", "Sem preferência"]},
+        {"tipo": "multipla_escolha", "texto": "Regiões com dor ou tensão", "obrigatorio": false,
+          "opcoes": ["Cabeça / Pescoço", "Ombros", "Costas superiores", "Costas inferiores",
+                     "Braços", "Pernas", "Pés", "Sem queixas específicas"]},
+        {"tipo": "texto_longo", "texto": "Informações adicionais que deseja compartilhar", "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Termo de Consentimento",
+      "perguntas": [
+        {"tipo": "consentimento",
+          "texto": "Declaro que as informações são verdadeiras e autorizo a realização da massagem, ciente de que não substitui tratamento médico.",
+          "label_aceite": "Li e concordo com o termo de consentimento."}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "titulo": "Anamnese — Estética Facial",
+  "descricao": "Preencha com atenção. Suas respostas são confidenciais e essenciais para um atendimento seguro e personalizado.",
+  "secoes": [
+    {
+      "titulo": "Dados Pessoais",
+      "descricao": "",
+      "perguntas": [
+        {"tipo": "texto",    "texto": "Nome completo",              "obrigatorio": true},
+        {"tipo": "data",     "texto": "Data de nascimento",         "obrigatorio": true, "formato": "DD/MM/AAAA"},
+        {"tipo": "cpf",      "texto": "CPF",                        "obrigatorio": false},
+        {"tipo": "telefone", "texto": "Telefone / WhatsApp",        "obrigatorio": true},
+        {"tipo": "texto",    "texto": "E-mail",                     "obrigatorio": false},
+        {"tipo": "texto",    "texto": "Profissão",                  "obrigatorio": false},
+        {"tipo": "escolha_unica", "texto": "Estado civil", "obrigatorio": false,
+          "opcoes": ["Solteira(o)", "Casada(o)", "Divorciada(o)", "Viúva(o)", "União estável"]}
+      ]
+    },
+    {
+      "titulo": "Saúde Geral",
+      "descricao": "Informações sobre sua saúde nos ajudam a escolher os melhores protocolos.",
+      "perguntas": [
+        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",          "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",       "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Possui alergia a algum produto ou substância?","obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",                 "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Realizou cirurgia recentemente?",              "obrigatorio": false},
+        {"tipo": "sim_nao",      "texto": "Tem histórico de queloides ou cicatrizes hipertróficas?", "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Saúde da Pele",
+      "descricao": "",
+      "perguntas": [
+        {"tipo": "escolha_unica", "texto": "Como você classifica sua pele?", "obrigatorio": true,
+          "opcoes": ["Seca", "Oleosa", "Mista", "Normal", "Sensível", "Não sei"]},
+        {"tipo": "sim_nao_qual", "texto": "Possui acne ou espinhas com frequência?",     "obrigatorio": false},
+        {"tipo": "sim_nao_qual", "texto": "Tem manchas ou hiperpigmentação?",            "obrigatorio": false},
+        {"tipo": "sim_nao",      "texto": "Tem sensibilidade ou vermelhidão fácil?",     "obrigatorio": false},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de esfoliantes ou ácidos em casa?",  "obrigatorio": false},
+        {"tipo": "sim_nao",      "texto": "Usa protetor solar diariamente?",             "obrigatorio": false},
+        {"tipo": "texto_longo",  "texto": "Descreva sua rotina de skincare atual",       "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Objetivos do Tratamento",
+      "descricao": "",
+      "perguntas": [
+        {"tipo": "multipla_escolha", "texto": "O que deseja tratar ou melhorar?", "obrigatorio": true,
+          "opcoes": ["Manchas", "Acne / Espinhas", "Rugas / Linhas de expressão", "Flacidez",
+                     "Poros dilatados", "Olheiras", "Hidratação", "Iluminação / Uniformização", "Outro"]},
+        {"tipo": "texto_longo", "texto": "Alguma informação adicional que deseja nos contar?", "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Termo de Consentimento",
+      "descricao": "Leia atentamente antes de assinar.",
+      "perguntas": [
+        {"tipo": "consentimento",
+          "texto": "Declaro que as informações acima são verdadeiras e autorizo a realização dos procedimentos estéticos indicados pela profissional, ciente dos cuidados e contraindicações informados.",
+          "label_aceite": "Li e concordo com o termo de consentimento."}
+      ]
+    }
+  ]
+}
