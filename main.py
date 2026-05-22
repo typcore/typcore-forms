@@ -71,13 +71,15 @@ except Exception as e:
 
 
 # ── TOKEN ─────────────────────────────────────────────────────
+# ── TOKEN CORRIGIDO (COPIE E COLE NO SEU MAIN.PY) ─────────────────────────────
 def gerar_token(paciente_id: int, especialidade_id: int,
                 especialidade_nome: str, clinica_id: str) -> str:
     data    = {"pid": paciente_id, "eid": especialidade_id,
                "en": especialidade_nome, "cid": clinica_id,
                "t": int(time.time())}
-    payload = json.dumps(data, separators=(",", ":"))
-    encoded = base64.urlsafe_b64encode(payload.encode()).decode().rstrip("=")
+    # O ensure_ascii=False garante UTF-8 padronizado em qualquer Windows
+    payload = json.dumps(data, separators=(",", ":"), ensure_ascii=False)
+    encoded = base64.urlsafe_b64encode(payload.encode('utf-8')).decode().rstrip("=")
     sig     = hmac.new(SECRET_KEY.encode(), encoded.encode(), hashlib.sha256).hexdigest()[:24]
     return f"{encoded}.{sig}"
 
@@ -85,9 +87,22 @@ def gerar_token(paciente_id: int, especialidade_id: int,
 def verificar_token(token: str) -> dict:
     try:
         encoded, sig = token.rsplit(".", 1)
+        
+        # 1. Tenta validar a assinatura padrão (UTF-8 limpo)
         expected = hmac.new(SECRET_KEY.encode(), encoded.encode(), hashlib.sha256).hexdigest()[:24]
+        
+        # 2. Se não bater, tenta validar simulando o "bug" de escape do Windows (\u00e9)
         if not hmac.compare_digest(sig, expected):
-            raise ValueError("Assinatura inválida")
+            padding = "=" * (4 - len(encoded) % 4)
+            data_temp = json.loads(base64.urlsafe_b64decode(encoded + padding))
+            # Recria o payload forçando o escape do Windows para checar a assinatura antiga
+            payload_escaped = json.dumps(data_temp, separators=(",", ":"), ensure_ascii=True)
+            encoded_escaped = base64.urlsafe_b64encode(payload_escaped.encode()).decode().rstrip("=")
+            expected_escaped = hmac.new(SECRET_KEY.encode(), encoded_escaped.encode(), hashlib.sha256).hexdigest()[:24]
+            
+            if not hmac.compare_digest(sig, expected_escaped):
+                raise ValueError("Assinatura inválida")
+        
         padding = "=" * (4 - len(encoded) % 4)
         data = json.loads(base64.urlsafe_b64decode(encoded + padding))
         if int(time.time()) - data.get("t", 0) > 30 * 86400:
