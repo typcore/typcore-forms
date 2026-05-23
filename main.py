@@ -71,13 +71,11 @@ except Exception as e:
 
 
 # ── TOKEN ─────────────────────────────────────────────────────
-# ── TOKEN CORRIGIDO (COPIE E COLE NO SEU MAIN.PY) ─────────────────────────────
 def gerar_token(paciente_id: int, especialidade_id: int,
                 especialidade_nome: str, clinica_id: str) -> str:
     data    = {"pid": paciente_id, "eid": especialidade_id,
                "en": especialidade_nome, "cid": clinica_id,
                "t": int(time.time())}
-    # O ensure_ascii=False garante UTF-8 padronizado em qualquer Windows
     payload = json.dumps(data, separators=(",", ":"), ensure_ascii=False)
     encoded = base64.urlsafe_b64encode(payload.encode('utf-8')).decode().rstrip("=")
     sig     = hmac.new(SECRET_KEY.encode(), encoded.encode(), hashlib.sha256).hexdigest()[:24]
@@ -87,22 +85,19 @@ def gerar_token(paciente_id: int, especialidade_id: int,
 def verificar_token(token: str) -> dict:
     try:
         encoded, sig = token.rsplit(".", 1)
-        
-        # 1. Tenta validar a assinatura padrão (UTF-8 limpo)
+
         expected = hmac.new(SECRET_KEY.encode(), encoded.encode(), hashlib.sha256).hexdigest()[:24]
-        
-        # 2. Se não bater, tenta validar simulando o "bug" de escape do Windows (\u00e9)
+
         if not hmac.compare_digest(sig, expected):
             padding = "=" * (4 - len(encoded) % 4)
             data_temp = json.loads(base64.urlsafe_b64decode(encoded + padding))
-            # Recria o payload forçando o escape do Windows para checar a assinatura antiga
             payload_escaped = json.dumps(data_temp, separators=(",", ":"), ensure_ascii=True)
             encoded_escaped = base64.urlsafe_b64encode(payload_escaped.encode()).decode().rstrip("=")
             expected_escaped = hmac.new(SECRET_KEY.encode(), encoded_escaped.encode(), hashlib.sha256).hexdigest()[:24]
-            
+
             if not hmac.compare_digest(sig, expected_escaped):
                 raise ValueError("Assinatura inválida")
-        
+
         padding = "=" * (4 - len(encoded) % 4)
         data = json.loads(base64.urlsafe_b64decode(encoded + padding))
         if int(time.time()) - data.get("t", 0) > 30 * 86400:
@@ -153,21 +148,23 @@ def _render_pergunta(p: dict, idx: int) -> str:
     if tipo == "cpf":
         return f'<div class="campo"><label>{texto} {star}</label><input type="text" name="{name}" {req_str} placeholder="000.000.000-00" class="mask-cpf"></div>'
     if tipo == "sim_nao":
+        # CORRIGIDO: ambas as opções sem required individual —
+        # a validação JS checa se qualquer opção do grupo foi marcada
         return f'''<div class="campo"><label>{texto} {star}</label>
-        <div class="radio-group">
-            <label class="radio-opt"><input type="radio" name="{name}" value="Sim" {req_str}><span>Sim</span></label>
+        <div class="radio-group" data-required="{str(obrig).lower()}">
+            <label class="radio-opt"><input type="radio" name="{name}" value="Sim"><span>Sim</span></label>
             <label class="radio-opt"><input type="radio" name="{name}" value="Não"><span>Não</span></label>
         </div></div>'''
     if tipo == "sim_nao_qual":
         return f'''<div class="campo"><label>{texto} {star}</label>
-        <div class="radio-group">
-            <label class="radio-opt"><input type="radio" name="{name}" value="Sim" {req_str} class="trigger-qual" data-target="qual_{idx}"><span>Sim</span></label>
+        <div class="radio-group" data-required="{str(obrig).lower()}">
+            <label class="radio-opt"><input type="radio" name="{name}" value="Sim" class="trigger-qual" data-target="qual_{idx}"><span>Sim</span></label>
             <label class="radio-opt"><input type="radio" name="{name}" value="Não" class="trigger-qual" data-target="qual_{idx}"><span>Não</span></label>
         </div>
         <input type="text" name="qual_{idx}" id="qual_{idx}" placeholder="Qual?" style="display:none;margin-top:8px" class="qual-input"></div>'''
     if tipo == "escolha_unica":
         opts = "".join(f'<label class="radio-opt"><input type="radio" name="{name}" value="{op}" {req_str}><span>{op}</span></label>' for op in p.get("opcoes", []))
-        return f'<div class="campo"><label>{texto} {star}</label><div class="radio-group vertical">{opts}</div></div>'
+        return f'<div class="campo"><label>{texto} {star}</label><div class="radio-group vertical" data-required="{str(obrig).lower()}">{opts}</div></div>'
     if tipo == "multipla_escolha":
         opts = "".join(f'<label class="check-opt"><input type="checkbox" name="{name}" value="{op}"><span>{op}</span></label>' for op in p.get("opcoes", []))
         return f'<div class="campo"><label>{texto} {star}</label><div class="check-group">{opts}</div></div>'
@@ -261,6 +258,7 @@ textarea{{resize:vertical;min-height:80px}}
 .sucesso p{{color:#666;font-size:15px;line-height:1.6}}
 .enviando{{display:none;text-align:center;padding:20px;color:#888;font-size:14px}}
 .erro-msg{{background:#fff5f4;border:1px solid #f5c6c3;border-radius:8px;padding:12px;font-size:13px;color:#c0392b;margin-bottom:16px;display:none}}
+.radio-group.invalido .radio-opt{{border-color:#c0392b}}
 </style>
 </head>
 <body>
@@ -294,12 +292,31 @@ function showStep(n){{
 document.querySelectorAll('.btn-next').forEach(btn=>{{
     btn.addEventListener('click',()=>{{
         const secao=document.querySelectorAll('.secao')[current];
+
+        // Valida inputs de texto e textarea obrigatórios
         for(const c of secao.querySelectorAll('input[required],textarea[required]')){{
-            if(!c.value.trim()&&c.type!=='radio'&&c.type!=='checkbox'){{c.focus();return;}}
+            if(c.type==='radio'||c.type==='checkbox') continue;
+            if(!c.value.trim()){{c.focus();return;}}
         }}
-        const radios={{}};
-        secao.querySelectorAll('input[type=radio][required]').forEach(r=>{{radios[r.name]=radios[r.name]||r.checked;}});
-        for(const[name,checked]of Object.entries(radios))if(!checked){{secao.querySelector('input[name="'+name+'"]').closest('.campo').scrollIntoView();return;}}
+
+        // Valida checkboxes obrigatórios
+        for(const c of secao.querySelectorAll('input[type=checkbox][required]')){{
+            if(!c.checked){{c.closest('.campo').scrollIntoView();return;}}
+        }}
+
+        // Valida grupos de radio obrigatórios (data-required="true")
+        // Checa se QUALQUER opção do grupo foi marcada — corrige bug do "Não" não avançar
+        const gruposRadio=secao.querySelectorAll('.radio-group[data-required="true"]');
+        for(const grupo of gruposRadio){{
+            const marcado=grupo.querySelector('input[type=radio]:checked');
+            if(!marcado){{
+                grupo.classList.add('invalido');
+                grupo.scrollIntoView({{block:'center'}});
+                return;
+            }}
+            grupo.classList.remove('invalido');
+        }}
+
         if(current<total-1)showStep(current+1);
     }});
 }});
@@ -309,6 +326,10 @@ document.querySelectorAll('.trigger-qual').forEach(r=>{{
         const t=document.getElementById(r.dataset.target);
         if(t)t.style.display=r.value==='Sim'?'block':'none';
     }});
+}});
+// Remove destaque de inválido ao marcar qualquer opção
+document.querySelectorAll('.radio-group[data-required="true"] input[type=radio]').forEach(r=>{{
+    r.addEventListener('change',()=>r.closest('.radio-group').classList.remove('invalido'));
 }});
 function maskData(e){{let v=e.target.value.replace(/[^0-9]/g,'').slice(0,8);if(v.length>4)v=v.slice(0,2)+'/'+v.slice(2,4)+'/'+v.slice(4);else if(v.length>2)v=v.slice(0,2)+'/'+v.slice(2);e.target.value=v;}}
 function maskFone(e){{let v=e.target.value.replace(/[^0-9]/g,'').slice(0,11);if(v.length>7)v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);else if(v.length>2)v='('+v.slice(0,2)+') '+v.slice(2);e.target.value=v;}}
