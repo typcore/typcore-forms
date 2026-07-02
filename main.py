@@ -496,12 +496,22 @@ async def receber_form(token: str, request: Request):
         else:
             respostas[k] = v
 
-    # Verifica consentimento
-    consentimento = any(
-        "sim" in str(v).lower() or "concordo" in str(v).lower()
-        for k, v in respostas.items()
-        if "consentimento" in k.lower() or (isinstance(v, str) and "concordo" in v.lower())
-    )
+    # Verifica consentimento — localiza a pergunta tipo "consentimento" no
+    # template desta especialidade (o campo é renderizado como q_N igual
+    # qualquer outra pergunta, então não dá pra achar pelo nome da chave).
+    consentimento = False
+    esp_nome = dados.get("en", "")
+    template = TEMPLATES.get(esp_nome)
+    if template:
+        idx = 0
+        for secao in template.get("secoes", []):
+            for p in secao.get("perguntas", []):
+                tipo = p.get("tipo", "texto")
+                if tipo == "consentimento":
+                    valor = respostas.get(f"q_{idx}")
+                    if isinstance(valor, str) and valor.strip().lower() == "sim":
+                        consentimento = True
+                idx += 2 if tipo == "sim_nao_qual" else 1
 
     session = Session()
     try:
