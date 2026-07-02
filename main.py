@@ -153,7 +153,7 @@ def _render_pergunta(p: dict, idx: int) -> str:
             <label>{texto} {star}</label>
             <div class="radio-group">
                 <label class="radio-opt"><input type="radio" name="{name}" value="Sim" {req_str}><span>Sim</span></label>
-                <label class="radio-opt"><input type="radio" name="{name}" value="Não"><span>Não</span></label>
+                <label class="radio-opt"><input type="radio" name="{name}" value="Não" {req_str}><span>Não</span></label>
             </div>
         </div>"""
 
@@ -163,7 +163,7 @@ def _render_pergunta(p: dict, idx: int) -> str:
             <label>{texto} {star}</label>
             <div class="radio-group">
                 <label class="radio-opt"><input type="radio" name="{name}" value="Sim" {req_str} class="trigger-qual" data-target="qual_{idx}"><span>Sim</span></label>
-                <label class="radio-opt"><input type="radio" name="{name}" value="Não" class="trigger-qual" data-target="qual_{idx}"><span>Não</span></label>
+                <label class="radio-opt"><input type="radio" name="{name}" value="Não" {req_str} class="trigger-qual" data-target="qual_{idx}"><span>Não</span></label>
             </div>
             <input type="text" name="qual_{idx}" id="qual_{idx}" placeholder="Qual?" style="display:none;margin-top:8px" class="qual-input">
         </div>"""
