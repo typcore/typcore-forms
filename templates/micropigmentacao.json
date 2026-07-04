@@ -1,36 +1,48 @@
 {
   "titulo": "Anamnese — Micropigmentação",
-  "descricao": "Preencha com atenção. Algumas condições de saúde podem contraindicar o procedimento.",
+  "descricao": "Preencha com atenção. Suas respostas são confidenciais e essenciais para um atendimento seguro e personalizado.",
   "secoes": [
     {
       "titulo": "Dados Pessoais",
       "perguntas": [
-        {"tipo": "texto",    "texto": "Nome completo",       "obrigatorio": true},
-        {"tipo": "data",     "texto": "Data de nascimento",  "obrigatorio": true, "formato": "DD/MM/AAAA"},
-        {"tipo": "cpf",      "texto": "CPF",                 "obrigatorio": false},
-        {"tipo": "telefone", "texto": "Telefone / WhatsApp", "obrigatorio": true},
-        {"tipo": "texto",    "texto": "E-mail",              "obrigatorio": false}
+        {"tipo": "texto",    "texto": "Nome completo",              "obrigatorio": true},
+        {"tipo": "data",     "texto": "Data de nascimento",         "obrigatorio": true, "formato": "DD/MM/AAAA"},
+        {"tipo": "cpf",      "texto": "CPF",                        "obrigatorio": false},
+        {"tipo": "telefone", "texto": "Telefone / WhatsApp",        "obrigatorio": true},
+        {"tipo": "texto",    "texto": "E-mail",                     "obrigatorio": false},
+        {"tipo": "texto",    "texto": "Profissão",                  "obrigatorio": false},
+        {"tipo": "escolha_unica", "texto": "Estado civil", "obrigatorio": false,
+          "opcoes": ["Solteira(o)", "Casada(o)", "Divorciada(o)", "Viúva(o)", "União estável"]}
       ]
     },
     {
-      "titulo": "Saúde e Contraindicações",
+      "titulo": "Saúde Geral",
+      "descricao": "Algumas condições de saúde podem contraindicar o procedimento — responda com atenção.",
       "perguntas": [
-        {"tipo": "sim_nao_qual", "texto": "Possui doença autoimune?",                         "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Tem diabetes?",                                    "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Faz uso de anticoagulantes?",                      "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "É alérgica(o) a pigmentos, níquel ou látex?",      "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",                     "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Tem histórico de queloides?",                      "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Realizou quimioterapia ou radioterapia recentemente?", "obrigatorio": false},
-        {"tipo": "sim_nao_qual", "texto": "Faz uso de Roacutan ou isotretinoína?",            "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Tem herpes labial (para micropigmentação labial)?", "obrigatorio": false}
+        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",                 "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",              "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Possui alergia a algum produto, cosmético ou substância?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",                        "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Possui marca-passo ou prótese metálica?",             "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Tem diabetes ou problemas de cicatrização/circulação?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de Roacutan (isotretinoína), ácidos ou retinol?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem histórico de queloides ou cicatrizes hipertróficas?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Realizou cirurgia recentemente na área a ser tratada?", "obrigatorio": false}
       ]
     },
     {
-      "titulo": "Histórico de Micropigmentação",
+      "titulo": "Contraindicações Específicas",
       "perguntas": [
-        {"tipo": "sim_nao_qual", "texto": "Já realizou micropigmentação anteriormente?",   "obrigatorio": false},
-        {"tipo": "sim_nao_qual", "texto": "Possui tatuagem na área a ser micropigmentada?", "obrigatorio": false},
+        {"tipo": "sim_nao_qual", "texto": "Possui doença autoimune?",                          "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Realizou quimioterapia ou radioterapia recentemente?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem herpes labial (para micropigmentação labial)?", "obrigatorio": false},
+        {"tipo": "sim_nao_qual", "texto": "Possui tatuagem na área a ser micropigmentada?",     "obrigatorio": false},
+        {"tipo": "sim_nao_qual", "texto": "Já realizou micropigmentação anteriormente?",        "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Procedimento Desejado",
+      "perguntas": [
         {"tipo": "escolha_unica", "texto": "Procedimento desejado", "obrigatorio": true,
           "opcoes": ["Sobrancelhas (fio a fio)", "Sobrancelhas (sombreado)", "Lábios", "Linha dos olhos", "Outro"]},
         {"tipo": "texto_longo", "texto": "Descreva o resultado que deseja alcançar", "obrigatorio": false}
@@ -40,7 +52,7 @@
       "titulo": "Termo de Consentimento",
       "perguntas": [
         {"tipo": "consentimento",
-          "texto": "Declaro que as informações são verdadeiras, estou ciente que o resultado final depende de minha biologia e que retoques podem ser necessários.",
+          "texto": "Declaro que as informações acima são verdadeiras e autorizo a realização do(s) procedimento(s) indicado(s) pela profissional, ciente dos cuidados, riscos e contraindicações informados, e de que o resultado final depende da minha biologia e que retoques podem ser necessários.",
           "label_aceite": "Li e concordo com o termo de consentimento."}
       ]
     }

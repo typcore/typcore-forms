@@ -1,27 +1,42 @@
 {
   "titulo": "Anamnese — Massoterapia",
-  "descricao": "Preencha com atenção para que possamos personalizar sua sessão com segurança.",
+  "descricao": "Preencha com atenção. Suas respostas são confidenciais e essenciais para um atendimento seguro e personalizado.",
   "secoes": [
     {
       "titulo": "Dados Pessoais",
       "perguntas": [
-        {"tipo": "texto",    "texto": "Nome completo",       "obrigatorio": true},
-        {"tipo": "data",     "texto": "Data de nascimento",  "obrigatorio": true, "formato": "DD/MM/AAAA"},
-        {"tipo": "telefone", "texto": "Telefone / WhatsApp", "obrigatorio": true},
-        {"tipo": "texto",    "texto": "E-mail",              "obrigatorio": false},
-        {"tipo": "texto",    "texto": "Profissão",           "obrigatorio": false}
+        {"tipo": "texto",    "texto": "Nome completo",              "obrigatorio": true},
+        {"tipo": "data",     "texto": "Data de nascimento",         "obrigatorio": true, "formato": "DD/MM/AAAA"},
+        {"tipo": "cpf",      "texto": "CPF",                        "obrigatorio": false},
+        {"tipo": "telefone", "texto": "Telefone / WhatsApp",        "obrigatorio": true},
+        {"tipo": "texto",    "texto": "E-mail",                     "obrigatorio": false},
+        {"tipo": "texto",    "texto": "Profissão",                  "obrigatorio": false},
+        {"tipo": "escolha_unica", "texto": "Estado civil", "obrigatorio": false,
+          "opcoes": ["Solteira(o)", "Casada(o)", "Divorciada(o)", "Viúva(o)", "União estável"]}
       ]
     },
     {
       "titulo": "Saúde Geral",
+      "descricao": "Informações sobre sua saúde nos ajudam a personalizar sua sessão com segurança.",
       "perguntas": [
-        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",         "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",      "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Está grávida?",                               "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Tem problemas de pressão arterial?",          "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Tem trombose ou problemas circulatórios?",    "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Tem alguma lesão, cirurgia recente ou área sensível?", "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Tem osteoporose ou problemas ósseos?",        "obrigatorio": false}
+        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",                 "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",              "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Possui alergia a algum produto, cosmético ou substância?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",                        "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Possui marca-passo ou prótese metálica?",             "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Tem diabetes ou problemas de cicatrização/circulação?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de Roacutan (isotretinoína), ácidos ou retinol?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem histórico de queloides ou cicatrizes hipertróficas?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Realizou cirurgia recentemente na área a ser tratada?", "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Contraindicações Específicas",
+      "perguntas": [
+        {"tipo": "sim_nao",      "texto": "Tem problemas de pressão arterial?",                  "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem trombose ou outros problemas circulatórios graves?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem osteoporose ou problemas ósseos?",                "obrigatorio": false},
+        {"tipo": "sim_nao_qual", "texto": "Tem alguma lesão, área sensível ou região que deseja evitar?", "obrigatorio": true}
       ]
     },
     {
@@ -42,7 +57,7 @@
       "titulo": "Termo de Consentimento",
       "perguntas": [
         {"tipo": "consentimento",
-          "texto": "Declaro que as informações são verdadeiras e autorizo a realização da massagem, ciente de que não substitui tratamento médico.",
+          "texto": "Declaro que as informações acima são verdadeiras e autorizo a realização da massagem, ciente dos cuidados, riscos e contraindicações informados, e de que não substitui tratamento médico.",
           "label_aceite": "Li e concordo com o termo de consentimento."}
       ]
     }

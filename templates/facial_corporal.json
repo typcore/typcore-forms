@@ -5,21 +5,29 @@
     {
       "titulo": "Dados Pessoais",
       "perguntas": [
-        {"tipo": "texto",    "texto": "Nome completo",       "obrigatorio": true},
-        {"tipo": "data",     "texto": "Data de nascimento",  "obrigatorio": true, "formato": "DD/MM/AAAA"},
-        {"tipo": "cpf",      "texto": "CPF",                 "obrigatorio": false},
-        {"tipo": "telefone", "texto": "Telefone / WhatsApp", "obrigatorio": true},
-        {"tipo": "texto",    "texto": "E-mail",              "obrigatorio": false}
+        {"tipo": "texto",    "texto": "Nome completo",              "obrigatorio": true},
+        {"tipo": "data",     "texto": "Data de nascimento",         "obrigatorio": true, "formato": "DD/MM/AAAA"},
+        {"tipo": "cpf",      "texto": "CPF",                        "obrigatorio": false},
+        {"tipo": "telefone", "texto": "Telefone / WhatsApp",        "obrigatorio": true},
+        {"tipo": "texto",    "texto": "E-mail",                     "obrigatorio": false},
+        {"tipo": "texto",    "texto": "Profissão",                  "obrigatorio": false},
+        {"tipo": "escolha_unica", "texto": "Estado civil", "obrigatorio": false,
+          "opcoes": ["Solteira(o)", "Casada(o)", "Divorciada(o)", "Viúva(o)", "União estável"]}
       ]
     },
     {
       "titulo": "Saúde Geral",
+      "descricao": "Informações sobre sua saúde nos ajudam a escolher os melhores protocolos com segurança.",
       "perguntas": [
-        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",        "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",     "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Possui alergia a produtos ou substâncias?",  "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",               "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Possui marca-passo ou prótese metálica?",    "obrigatorio": true}
+        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",                 "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",              "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Possui alergia a algum produto, cosmético ou substância?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",                        "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Possui marca-passo ou prótese metálica?",             "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Tem diabetes ou problemas de cicatrização/circulação?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de Roacutan (isotretinoína), ácidos ou retinol?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem histórico de queloides ou cicatrizes hipertróficas?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Realizou cirurgia recentemente na área a ser tratada?", "obrigatorio": false}
       ]
     },
     {
@@ -36,24 +44,24 @@
       "perguntas": [
         {"tipo": "sim_nao", "texto": "Tem problemas circulatórios ou varizes?",       "obrigatorio": false},
         {"tipo": "escolha_unica", "texto": "Pratica atividade física?", "obrigatorio": false,
-          "opcoes": ["Não pratico", "1-2x por semana", "3-4x por semana", "5x ou mais"]}
+          "opcoes": ["Não pratico", "1-2x por semana", "3-4x por semana", "5x ou mais por semana"]}
       ]
     },
     {
-      "titulo": "Objetivos",
+      "titulo": "Objetivos do Tratamento",
       "perguntas": [
         {"tipo": "multipla_escolha", "texto": "O que deseja tratar no rosto?", "obrigatorio": false,
-          "opcoes": ["Manchas", "Acne", "Rugas", "Flacidez", "Hidratação", "Outro"]},
+          "opcoes": ["Manchas", "Acne / Espinhas", "Rugas / Linhas de expressão", "Flacidez", "Hidratação", "Outro"]},
         {"tipo": "multipla_escolha", "texto": "O que deseja tratar no corpo?", "obrigatorio": false,
-          "opcoes": ["Celulite", "Gordura localizada", "Flacidez", "Estrias", "Modelagem", "Outro"]},
-        {"tipo": "texto_longo", "texto": "Informações adicionais", "obrigatorio": false}
+          "opcoes": ["Celulite", "Gordura localizada", "Flacidez corporal", "Estrias", "Modelagem corporal", "Outro"]},
+        {"tipo": "texto_longo", "texto": "Informações adicionais que deseja compartilhar", "obrigatorio": false}
       ]
     },
     {
       "titulo": "Termo de Consentimento",
       "perguntas": [
         {"tipo": "consentimento",
-          "texto": "Declaro que as informações são verdadeiras e autorizo os procedimentos indicados.",
+          "texto": "Declaro que as informações acima são verdadeiras e autorizo a realização do(s) procedimento(s) indicado(s) pela profissional, ciente dos cuidados, riscos e contraindicações informados.",
           "label_aceite": "Li e concordo com o termo de consentimento."}
       ]
     }

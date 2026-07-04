@@ -18,14 +18,17 @@
     },
     {
       "titulo": "Saúde Geral",
-      "descricao": "Informações sobre sua saúde nos ajudam a escolher os melhores protocolos.",
+      "descricao": "Informações sobre sua saúde nos ajudam a escolher os melhores protocolos com segurança.",
       "perguntas": [
-        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",          "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",       "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Possui alergia a algum produto ou substância?","obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",                 "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Realizou cirurgia recentemente?",              "obrigatorio": false},
-        {"tipo": "sim_nao",      "texto": "Tem histórico de queloides ou cicatrizes hipertróficas?", "obrigatorio": false}
+        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",                 "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",              "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Possui alergia a algum produto, cosmético ou substância?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",                        "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Possui marca-passo ou prótese metálica?",             "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Tem diabetes ou problemas de cicatrização/circulação?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de Roacutan (isotretinoína), ácidos ou retinol?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem histórico de queloides ou cicatrizes hipertróficas?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Realizou cirurgia recentemente na área a ser tratada?", "obrigatorio": false}
       ]
     },
     {
@@ -37,7 +40,6 @@
         {"tipo": "sim_nao_qual", "texto": "Possui acne ou espinhas com frequência?",     "obrigatorio": false},
         {"tipo": "sim_nao_qual", "texto": "Tem manchas ou hiperpigmentação?",            "obrigatorio": false},
         {"tipo": "sim_nao",      "texto": "Tem sensibilidade ou vermelhidão fácil?",     "obrigatorio": false},
-        {"tipo": "sim_nao_qual", "texto": "Faz uso de esfoliantes ou ácidos em casa?",  "obrigatorio": false},
         {"tipo": "sim_nao",      "texto": "Usa protetor solar diariamente?",             "obrigatorio": false},
         {"tipo": "texto_longo",  "texto": "Descreva sua rotina de skincare atual",       "obrigatorio": false}
       ]
@@ -57,7 +59,7 @@
       "descricao": "Leia atentamente antes de assinar.",
       "perguntas": [
         {"tipo": "consentimento",
-          "texto": "Declaro que as informações acima são verdadeiras e autorizo a realização dos procedimentos estéticos indicados pela profissional, ciente dos cuidados e contraindicações informados.",
+          "texto": "Declaro que as informações acima são verdadeiras e autorizo a realização do(s) procedimento(s) indicado(s) pela profissional, ciente dos cuidados, riscos e contraindicações informados.",
           "label_aceite": "Li e concordo com o termo de consentimento."}
       ]
     }

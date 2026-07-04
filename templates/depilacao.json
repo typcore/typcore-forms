@@ -1,26 +1,39 @@
 {
   "titulo": "Anamnese — Depilação",
-  "descricao": "Preencha com atenção para garantir sua segurança durante o procedimento.",
+  "descricao": "Preencha com atenção. Suas respostas são confidenciais e essenciais para um atendimento seguro e personalizado.",
   "secoes": [
     {
       "titulo": "Dados Pessoais",
       "perguntas": [
-        {"tipo": "texto",    "texto": "Nome completo",       "obrigatorio": true},
-        {"tipo": "data",     "texto": "Data de nascimento",  "obrigatorio": true, "formato": "DD/MM/AAAA"},
-        {"tipo": "telefone", "texto": "Telefone / WhatsApp", "obrigatorio": true},
-        {"tipo": "texto",    "texto": "E-mail",              "obrigatorio": false}
+        {"tipo": "texto",    "texto": "Nome completo",              "obrigatorio": true},
+        {"tipo": "data",     "texto": "Data de nascimento",         "obrigatorio": true, "formato": "DD/MM/AAAA"},
+        {"tipo": "cpf",      "texto": "CPF",                        "obrigatorio": false},
+        {"tipo": "telefone", "texto": "Telefone / WhatsApp",        "obrigatorio": true},
+        {"tipo": "texto",    "texto": "E-mail",                     "obrigatorio": false},
+        {"tipo": "texto",    "texto": "Profissão",                  "obrigatorio": false},
+        {"tipo": "escolha_unica", "texto": "Estado civil", "obrigatorio": false,
+          "opcoes": ["Solteira(o)", "Casada(o)", "Divorciada(o)", "Viúva(o)", "União estável"]}
       ]
     },
     {
-      "titulo": "Saúde e Contraindicações",
+      "titulo": "Saúde Geral",
+      "descricao": "Informações sobre sua saúde nos ajudam a garantir sua segurança durante o procedimento.",
       "perguntas": [
-        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença de pele diagnosticada?",      "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Possui alergia a cera, resinas ou cosméticos?",    "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Está grávida?",                                    "obrigatorio": true},
-        {"tipo": "sim_nao_qual", "texto": "Usa Roacutan, ácidos ou retinol?",                 "obrigatorio": true},
-        {"tipo": "sim_nao",      "texto": "Tem diabetes ou problemas de cicatrização?",       "obrigatorio": false},
-        {"tipo": "sim_nao",      "texto": "Realizou procedimento estético recentemente na área?", "obrigatorio": false},
-        {"tipo": "sim_nao",      "texto": "Tem histórico de herpes na região a ser depilada?", "obrigatorio": false}
+        {"tipo": "sim_nao_qual", "texto": "Possui alguma doença diagnosticada?",                 "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de algum medicamento contínuo?",              "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Possui alergia a algum produto, cosmético ou substância?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Está grávida ou amamentando?",                        "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Possui marca-passo ou prótese metálica?",             "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Tem diabetes ou problemas de cicatrização/circulação?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Faz uso de Roacutan (isotretinoína), ácidos ou retinol?", "obrigatorio": true},
+        {"tipo": "sim_nao",      "texto": "Tem histórico de queloides ou cicatrizes hipertróficas?", "obrigatorio": true},
+        {"tipo": "sim_nao_qual", "texto": "Realizou cirurgia recentemente na área a ser tratada?", "obrigatorio": false}
+      ]
+    },
+    {
+      "titulo": "Contraindicações Específicas",
+      "perguntas": [
+        {"tipo": "sim_nao", "texto": "Tem histórico de herpes na região a ser depilada?", "obrigatorio": true}
       ]
     },
     {
@@ -28,7 +41,7 @@
       "perguntas": [
         {"tipo": "escolha_unica", "texto": "Qual método de depilação usa atualmente?", "obrigatorio": false,
           "opcoes": ["Cera", "Lâmina / Gilete", "Creme depilatório", "Laser", "Nunca depilei", "Outro"]},
-        {"tipo": "sim_nao", "texto": "Já teve reação adversa após depilação?", "obrigatorio": false},
+        {"tipo": "sim_nao_qual", "texto": "Já teve reação adversa após depilação?", "obrigatorio": false},
         {"tipo": "texto_longo", "texto": "Regiões a serem depiladas nesta sessão", "obrigatorio": true}
       ]
     },
@@ -36,7 +49,7 @@
       "titulo": "Termo de Consentimento",
       "perguntas": [
         {"tipo": "consentimento",
-          "texto": "Declaro que as informações são verdadeiras e estou ciente dos cuidados pós-depilação.",
+          "texto": "Declaro que as informações acima são verdadeiras e autorizo a realização do(s) procedimento(s) indicado(s) pela profissional, ciente dos cuidados, riscos e contraindicações informados, incluindo os cuidados pós-depilação.",
           "label_aceite": "Li e concordo com o termo de consentimento."}
       ]
     }
