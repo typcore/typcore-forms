@@ -94,6 +94,30 @@ _map = {
     "Depilação":          "depilacao.json",
     "Micropigmentação":   "micropigmentacao.json",
     "Massoterapia":       "massoterapia.json",
+
+    # Procedimentos específicos — cada um usa o formulário de anamnese da
+    # sua categoria "mãe" (mesmo mapeamento do app desktop, em
+    # forms/forms_link.py:_MAPA_TEMPLATES — manter os dois em sincronia).
+    # Estética Facial
+    "Limpeza de pele":                              "facial.json",
+    "Peeling (Químico, de Cristal ou Diamante)":     "facial.json",
+    "Microagulhamento":                              "facial.json",
+    "Radiofrequência Facial":                        "facial.json",
+    # Estética Corporal
+    "Drenagem Linfática":                            "corporal.json",
+    "Massagem Modeladora":                           "corporal.json",
+    "Criolipólise":                                  "corporal.json",
+    "Lipocavitação (Ultrassom)":                     "corporal.json",
+    "Endermologia":                                  "corporal.json",
+    # Estética Avançada (minimamente invasiva)
+    "Toxina Botulínica (Botox)":                     "facial.json",
+    "Preenchimento (Ácido Hialurônico)":             "facial.json",
+    "Fios de Sustentação (PDO)":                     "facial.json",
+    "Bioestimuladores de Colágeno":                  "facial.json",
+    # Outros
+    "Depilação a Laser":                             "depilacao.json",
+    "Luz Intensa Pulsada (LIP)":                     "facial.json",
+    "Terapia Capilar":                               "facial.json",
 }
 for nome, arquivo in _map.items():
     caminho = os.path.join(TEMPLATES_DIR, arquivo)
